@@ -35,6 +35,7 @@ public:
 };
 
 
+//main
 int main()
 {
     if(decide(3,4,SumGreaterThanX(7))){
