@@ -3,6 +3,8 @@
 #include <string>
 
 
+//hatra hatekony beszuras. (előre kevésbé)
+
 
 
 int main(){
@@ -39,6 +41,24 @@ int main(){
         std::cout << i << " ";
     }
     std::cout << std::endl;
+
+    //insert to the front
+    
+    std::vector<int> myVector = {2, 3, 4, 5};
+
+    // Element to insert at the front
+    int elementToInsert = 1;
+
+    // Insert at the front
+    //std::cout <<"Eddig ez volt az eleje: " << *myVector.begin() << std::endl;
+    myVector.insert(myVector.begin(), elementToInsert);
+
+    // Display the vector
+    for (const auto& element : myVector) {
+        std::cout << element << " ";
+    }
+
+
 
     return 0;
 }
