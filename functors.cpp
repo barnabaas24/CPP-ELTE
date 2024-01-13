@@ -44,6 +44,11 @@ int main()
     else{
         std::cout << "naay!" << std::endl;
     }
+
+
+    if(decide(3,10,Less())){
+        std::cout << "3 is less than 4" << std::endl;
+    }
     
     return 0;
 }
