@@ -60,5 +60,22 @@ int main(){
 
 
 
+    std::cout<<std::endl;
+    std::cout <<"=========="  << std::endl;
+    std::vector<int> emptyVec;
+    std::vector<int>::iterator emptyIt = emptyVec.begin();
+
+    emptyVec.insert(emptyIt,10);
+
+    for (int i = 0; i < emptyVec.size(); i++)
+    {
+        std::cout<< emptyVec[i] << " ";
+    }
+
+    std::cout<< std::endl;
+    
+
+
+
     return 0;
 }
