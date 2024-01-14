@@ -32,6 +32,16 @@ int main(){
 
     //random acces:
     std::deque<int>::iterator it1 = myDeq.begin()+3;
+
+
+    //swapping:
+    std::deque<int> first = {10,20,30,40};
+    std::deque<int> sec = {10,10,10,10,10,10};
+    first.swap(sec);
+
+    // for(int i : first){
+    //     std::cout << i << std::endl;
+    // }
  
 
 
