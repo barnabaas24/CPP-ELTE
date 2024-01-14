@@ -4,12 +4,17 @@
 
 //unary predicate
 struct BigNumber {
-bool operator()(const int param) const { return param > 100; }
+    bool operator()(const int param) const { return param > 100; }
 };
 
 struct Greater {
-bool operator()(int lhs, int rhs) const { return lhs > rhs; }
+    bool operator()(int lhs, int rhs) const { return lhs > rhs; }
 };
+
+struct Even {
+    bool operator()(const int param) { return param % 2 == 0; }
+};
+
 
 
 
@@ -58,10 +63,31 @@ int main() {
     for (std::vector<int>::iterator it = vecDesc.begin(); it != vecDesc.end(); ++it){
         std::cout << *it << " "; // 7 6 4 3 3 1
     }
+    std::cout << std::endl;
+
 
     //=========stable_sort===========
     //megtartja az elemek eredeti sorrendjét
 
+
+    //========partition==========
+    //Szétoszt egy vektort úgy, hogy a vektor egyik felében páros, a másik felében páratlan számok legyenek.
+
+
+    std::vector<int> vecPart;
+    for (int i = 0; i < 10; i++){
+        vecPart.push_back(i);
+    }
+    std::partition(vecPart.begin(), vecPart.end(), Even());
+    std::cout << "after partition: ";
+    for (int i = 0; i < vecPart.size(); i++){
+        std::cout << vecPart[i] <<" ";
+    }
+
+    std::cout << std::endl;
+
+    //=======stable_partition==========
+    //...
 
 
 
