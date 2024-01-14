@@ -1,6 +1,9 @@
 #include <iostream>
 
 
+//functor: olyan osztály melynek tul van terhelve a () operátora.
+
+
 //egy sima függvény, ami vár egy template osztályt paraméterül, ami functor, mivel meghívjuk a () operátorát.
 template<class Comparator>
 bool decide(int a, int b, Comparator c){
