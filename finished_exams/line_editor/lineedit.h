@@ -28,8 +28,10 @@ public:
             *position = key;
         }
         else{
+            //vissza adja azt az iterátort ami a beszurt elemre mutat
             position= container.insert(position,key);
         }
+        //növeljük, hogy a beszurt elem után szurjunk be ismét
         position++;
     }
 

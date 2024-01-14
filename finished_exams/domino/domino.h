@@ -3,17 +3,31 @@
 
 #include <vector>
 #include <utility>
-#include <list>
+#include <deque>
 #include <iostream>
+#include <algorithm>
 
-template<typename T>
+//class Functor = std::less<T>
+
+template <typename K>
+struct equalNum{
+
+    bool operator()(const K &a,const K &b) const{
+        return a==b;
+    }
+};
+
+
+template<typename T,class Functor = equalNum<T>>
 class domino{
 
 private:
 
-    std::list<std::pair<T,T>> container;
+    std::deque<std::pair<T,T>> container;
     T front;
     T back;
+    Functor f;
+
 
 public:
 
@@ -27,13 +41,19 @@ public:
 
     //konstans objektumra csak a konstans fuggvenyek hivodnak meg,
     //de ha modositjak az objektum adatait akkor nem lehetnek constok
-    bool push_back(const std::pair<T,T> pair){
-        if(back==pair.first){
+
+    bool decide(T a, T b, Functor f){
+        return f(a,b);
+    }
+
+    bool push_back(std::pair<T,T> pair){
+        if(f(pair.first,back)){
             container.push_back(pair);
             back = pair.second;
             return true;
         }
-        else if(back==pair.second){
+        else if(f(pair.second,back)){
+            //std::swap(pair.first, pair.second);
             container.push_back(pair);
             back = pair.first;
             return true;
@@ -41,19 +61,34 @@ public:
         return false;
     }
 
-    bool push_front(const std::pair<T,T> pair){
-        if(front==pair.first){
+
+    bool push_front(std::pair<T,T> pair){
+
+        if(f(pair.first,front)){
+            //std::swap(pair.first, pair.second);
             container.push_front(pair);
             front = pair.second;
             return true;
         }
-        else if(front==pair.second){
+        else if(f(pair.second,front)){
             container.push_front(pair);
             front = pair.first;
             return true;
-
         }
         return false;
+
+
+        // if(decide(pair.first,front,Functor())){
+        //     container.push_front(pair);
+        //     front = pair.second;
+        //     return true;
+        // }
+        // else if(decide(pair.second,front,Functor())){
+        //     container.push_front(pair);
+        //     front = pair.first;
+        //     return true;
+        // }
+        // return false;
     }
 
     
@@ -92,28 +127,42 @@ public:
     }
 
     void printAll() const{
-        typedef typename std::list<std::pair<T,T>>::iterator PairIterator;
+        typedef typename std::deque<std::pair<T,T>>::iterator PairIterator;
         for (PairIterator it = container.begin(); it!=container.end(); ++it)
         {
             std::cout << (*it).first << " " << (*it).second << " ";
         }
         std::cout << std::endl;
-        
+    }
+
+
+    bool equals(const domino<T,Functor> &d) const{
+        if(d.container.size()!=this->container.size()){
+            return false;
+        }
+
+        for (int i = 0; i < container.size(); i++)
+        {
+            if(container[i]!=d.container[i]){
+                return false;
+            }
+        }
+        return true;
     }
 
 
 };
 
 
-
-    template <typename T>    
-    bool operator >> (const std::pair<T, T> &pair, domino<T>& d) {
+    //, class Functor = std::less<T>
+    template <typename T, class Functor = equalNum<T>>    
+    bool operator >> (const std::pair<T, T> &pair, domino<T,Functor>& d) {
         return d.push_front(pair);
-        
     }
 
-    template <typename T>    
-    bool operator << (const std::pair<T, T> &pair, domino<T>& d){
+    //, class Functor = std::less<T>
+    template <typename T, class Functor = equalNum<T>>    
+    bool operator << (const std::pair<T, T> &pair, domino<T, Functor>& d){
         return d.push_back(pair);
     }
 

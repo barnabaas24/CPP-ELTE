@@ -71,7 +71,7 @@ int main()
     your_mark = ds.size();
   }
 
-  /* 4-es
+  // 4-es
   domino<int, congruent<5> > dcf( std::make_pair( 3, 7 ) );
   dcf.push_back( std::make_pair( 2, 2 ) );
   dcf >> std::make_pair( 3, 12 );
@@ -100,7 +100,6 @@ int main()
   {
     your_mark = cdi.size();
   }
-  */
   /* 5-os
   domino<int, congruent<3> > a( std::make_pair( 2, 4 ) );
   a >> std::make_pair( 7, 7 );
