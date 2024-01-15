@@ -34,6 +34,11 @@ int main() {
     *result = 20;
     std::cout << v[0] << std::endl; 
 
+    
+    std::vector<int> findvec = {10,20,30};
+    auto it = std::find(findvec.begin(),findvec.end(),10);
+    
+
 
     //=========find_if==========   
     v.push_back(10);
@@ -49,6 +54,7 @@ int main() {
 
     //============sort=============
     //Az std::sort, ha külön paramétert nem adunk neki, az < operátor szerint rendez.
+    //deque, vectorra mukodik csak.
     std::vector<int> vecAscend{6, 3, 7, 4, 1, 3};
     std::sort(vecAscend.begin(), vecAscend.end());
 

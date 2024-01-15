@@ -12,6 +12,7 @@ class array_shifter_util{
 
 public:
     
+    // a benti array ugyan oda mutat mint a kinti, tehát ugyan azokra az értékekre mutat
     array_shifter_util(T* _array, int _array_size): array_size(_array_size) {
         array = _array;
     }

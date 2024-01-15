@@ -79,6 +79,12 @@ public:
         std::sort(array,array+arraySize,c);
     }
 
+    //"egyszerubb" alternatíva
+    // template<typename Functor = std::less<T>>
+    // void sort(const Functor& f = Functor()){
+    //     std::sort(array, array + arraySize, f);
+    // }
+
     template<class Comparator>
     int get_first_index_if(Comparator c){
         for (int i = 0; i < arraySize; i++)

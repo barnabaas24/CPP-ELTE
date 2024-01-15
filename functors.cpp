@@ -15,11 +15,11 @@ bool decide(int a, int b, Comparator c){
 
 struct IsEven // unary predicate -> mert csak egy adott típusú objektumot vár és bool a visszatérési értéke
 {
-bool operator()(const int &a) const { return a % 2 == 0; }
+    bool operator()(const int &a) const { return a % 2 == 0; }
 };
 
 struct Less {   // bináris predikátum, azaz a gömbölyű zárójel operátora két azonos típusú objektumhoz rendel egy logikai értéket
-bool operator()(int a, int b) const { return a < b; }
+    bool operator()(int a, int b) const { return a < b; }
 };
 
 
@@ -49,8 +49,15 @@ int main()
     }
 
 
+    //ha meghivjuk a functort akkor kotelezo fuggvenynek atadni
     if(decide(3,10,Less())){
         std::cout << "3 is less than 4" << std::endl;
+    }
+
+
+    Less l;
+    if(l(3,10)){
+        std::cout <<"igy is fog mukodni" << std::endl;
     }
     
     return 0;

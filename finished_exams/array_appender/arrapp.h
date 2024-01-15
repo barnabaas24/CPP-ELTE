@@ -17,15 +17,21 @@ class Array_Iterator{
         return p;
     }
 
+    //prefixnél nem kell a dummy int
     Array_Iterator operator++(){
         ++*p;
         return p;
     }
 
-    //a suffix miatt kell irni a paraméterbe az int-et
-    Array_Iterator operator--(int){
-        --*p;
-        return p;
+    //a szuffix miatt kell irni a paraméterbe az int-et
+    void operator--(int){
+        // Array_Iterator tmp(p); //jelen esetben nem szamit
+        --*p;   //kiértékelődik a pointer és levonunk 1-et a számból
+        // return tmp; //jelen esetben nem szamit
+    }
+
+    int operator*(){
+        return *p;
     }
 
     
